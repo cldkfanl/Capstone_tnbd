@@ -1,0 +1,22 @@
+<launch>
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi, TNBD]"/>
+  <arg name="multi_robot_name" default=""/>
+
+  <arg name="urdf_file" default="$(find xacro)/xacro --inorder '$(find tnbd)/urdf/tnbd.urdf'" />
+  <param name="robot_description" command="$(arg urdf_file)" />
+    <node
+     name="joint_state_publisher_gui"
+     pkg="joint_state_publisher_gui"
+     type="joint_state_publisher_gui" />
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+      <param name="publish_frequency" type="double" value="50.0" />
+      <param name="tf_prefix" value="$(arg multi_robot_name)" />
+  </node>
+
+  <node
+      name="rviz1"
+      pkg="rviz"
+      type="rviz"
+      args="-d $(find tnbd)/urdf/robot.rviz" />
+         
+</launch>

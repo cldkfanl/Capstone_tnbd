@@ -1,0 +1,869 @@
+# YOLOv5 ðŸš€ by Ultralytics, GPL-3.0 license
+# ImageNet-1k dataset https://www.image-net.org/index.php by Stanford University
+# Simplified class names from https://github.com/anishathalye/imagenet-simple-labels
+# Example usage: python classify/train.py --data imagenet
+# parent
+# â”œâ”€â”€ yolov5
+# â””â”€â”€ datasets
+#     â””â”€â”€ imagenet  â† downloads here (144 GB)
+
+
+# Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
+path: ../datasets/imagenet  # dataset root dir
+train: train  # train images (relative to 'path') 1281167 images
+val: val  # val images (relative to 'path') 50000 images
+test:  # test images (optional)
+
+# Classes
+names:
+  0: tench
+  1: goldfish
+  2: great white shark
+  3: tiger shark
+  4: hammerhead shark
+  5: electric ray
+  6: stingray
+  7: cock
+  8: hen
+  9: ostrich
+  10: brambling
+  11: goldfinch
+  12: house finch
+  13: junco
+  14: indigo bunting
+  15: American robin
+  16: bulbul
+  17: jay
+  18: magpie
+  19: chickadee
+  20: American dipper
+  21: kite
+  22: bald eagle
+  23: vulture
+  24: great grey owl
+  25: fire salamander
+  26: smooth newt
+  27: newt
+  28: spotted salamander
+  29: axolotl
+  30: American bullfrog
+  31: tree frog
+  32: tailed frog
+  33: loggerhead sea turtle
+  34: leatherback sea turtle
+  35: mud turtle
+  36: terrapin
+  37: box turtle
+  38: banded gecko
+  39: green iguana
+  40: Carolina anole
+  41: desert grassland whiptail lizard
+  42: agama
+  43: frilled-necked lizard
+  44: alligator lizard
+  45: Gila monster
+  46: European green lizard
+  47: chameleon
+  48: Komodo dragon
+  49: Nile crocodile
+  50: American alligator
+  51: triceratops
+  52: worm snake
+  53: ring-necked snake
+  54: eastern hog-nosed snake
+  55: smooth green snake
+  56: kingsnake
+  57: garter snake
+  58: water snake
+  59: vine snake
+  60: night snake
+  61: boa constrictor
+  62: African rock python
+  63: Indian cobra
+  64: green mamba
+  65: sea snake
+  66: Saharan horned viper
+  67: eastern diamondback rattlesnake
+  68: sidewinder
+  69: trilobite
+  70: harvestman
+  71: scorpion
+  72: yellow garden spider
+  73: barn spider
+  74: European garden spider
+  75: southern black widow
+  76: tarantula
+  77: wolf spider
+  78: tick
+  79: centipede
+  80: black grouse
+  81: ptarmigan
+  82: ruffed grouse
+  83: prairie grouse
+  84: peacock
+  85: quail
+  86: partridge
+  87: grey parrot
+  88: macaw
+  89: sulphur-crested cockatoo
+  90: lorikeet
+  91: coucal
+  92: bee eater
+  93: hornbill
+  94: hummingbird
+  95: jacamar
+  96: toucan
+  97: duck
+  98: red-breasted merganser
+  99: goose
+  100: black swan
+  101: tusker
+  102: echidna
+  103: platypus
+  104: wallaby
+  105: koala
+  106: wombat
+  107: jellyfish
+  108: sea anemone
+  109: brain coral
+  110: flatworm
+  111: nematode
+  112: conch
+  113: snail
+  114: slug
+  115: sea slug
+  116: chiton
+  117: chambered nautilus
+  118: Dungeness crab
+  119: rock crab
+  120: fiddler crab
+  121: red king crab
+  122: American lobster
+  123: spiny lobster
+  124: crayfish
+  125: hermit crab
+  126: isopod
+  127: white stork
+  128: black stork
+  129: spoonbill
+  130: flamingo
+  131: little blue heron
+  132: great egret
+  133: bittern
+  134: crane (bird)
+  135: limpkin
+  136: common gallinule
+  137: American coot
+  138: bustard
+  139: ruddy turnstone
+  140: dunlin
+  141: common redshank
+  142: dowitcher
+  143: oystercatcher
+  144: pelican
+  145: king penguin
+  146: albatross
+  147: grey whale
+  148: killer whale
+  149: dugong
+  150: sea lion
+  151: Chihuahua
+  152: Japanese Chin
+  153: Maltese
+  154: Pekingese
+  155: Shih Tzu
+  156: King Charles Spaniel
+  157: Papillon
+  158: toy terrier
+  159: Rhodesian Ridgeback
+  160: Afghan Hound
+  161: Basset Hound
+  162: Beagle
+  163: Bloodhound
+  164: Bluetick Coonhound
+  165: Black and Tan Coonhound
+  166: Treeing Walker Coonhound
+  167: English foxhound
+  168: Redbone Coonhound
+  169: borzoi
+  170: Irish Wolfhound
+  171: Italian Greyhound
+  172: Whippet
+  173: Ibizan Hound
+  174: Norwegian Elkhound
+  175: Otterhound
+  176: Saluki
+  177: Scottish Deerhound
+  178: Weimaraner
+  179: Staffordshire Bull Terrier
+  180: American Staffordshire Terrier
+  181: Bedlington Terrier
+  182: Border Terrier
+  183: Kerry Blue Terrier
+  184: Irish Terrier
+  185: Norfolk Terrier
+  186: Norwich Terrier
+  187: Yorkshire Terrier
+  188: Wire Fox Terrier
+  189: Lakeland Terrier
+  190: Sealyham Terrier
+  191: Airedale Terrier
+  192: Cairn Terrier
+  193: Australian Terrier
+  194: Dandie Dinmont Terrier
+  195: Boston Terrier
+  196: Miniature Schnauzer
+  197: Giant Schnauzer
+  198: Standard Schnauzer
+  199: Scottish Terrier
+  200: Tibetan Terrier
+  201: Australian Silky Terrier
+  202: Soft-coated Wheaten Terrier
+  203: West Highland White Terrier
+  204: Lhasa Apso
+  205: Flat-Coated Retriever
+  206: Curly-coated Retriever
+  207: Golden Retriever
+  208: Labrador Retriever
+  209: Chesapeake Bay Retriever
+  210: German Shorthaired Pointer
+  211: Vizsla
+  212: English Setter
+  213: Irish Setter
+  214: Gordon Setter
+  215: Brittany
+  216: Clumber Spaniel
+  217: English Springer Spaniel
+  218: Welsh Springer Spaniel
+  219: Cocker Spaniels
+  220: Sussex Spaniel
+  221: Irish Water Spaniel
+  222: Kuvasz
+  223: Schipperke
+  224: Groenendael
+  225: Malinois
+  226: Briard
+  227: Australian Kelpie
+  228: Komondor
+  229: Old English Sheepdog
+  230: Shetland Sheepdog
+  231: collie
+  232: Border Collie
+  233: Bouvier des Flandres
+  234: Rottweiler
+  235: German Shepherd Dog
+  236: Dobermann
+  237: Miniature Pinscher
+  238: Greater Swiss Mountain Dog
+  239: Bernese Mountain Dog
+  240: Appenzeller Sennenhund
+  241: Entlebucher Sennenhund
+  242: Boxer
+  243: Bullmastiff
+  244: Tibetan Mastiff
+  245: French Bulldog
+  246: Great Dane
+  247: St. Bernard
+  248: husky
+  249: Alaskan Malamute
+  250: Siberian Husky
+  251: Dalmatian
+  252: Affenpinscher
+  253: Basenji
+  254: pug
+  255: Leonberger
+  256: Newfoundland
+  257: Pyrenean Mountain Dog
+  258: Samoyed
+  259: Pomeranian
+  260: Chow Chow
+  261: Keeshond
+  262: Griffon Bruxellois
+  263: Pembroke Welsh Corgi
+  264: Cardigan Welsh Corgi
+  265: Toy Poodle
+  266: Miniature Poodle
+  267: Standard Poodle
+  268: Mexican hairless dog
+  269: grey wolf
+  270: Alaskan tundra wolf
+  271: red wolf
+  272: coyote
+  273: dingo
+  274: dhole
+  275: African wild dog
+  276: hyena
+  277: red fox
+  278: kit fox
+  279: Arctic fox
+  280: grey fox
+  281: tabby cat
+  282: tiger cat
+  283: Persian cat
+  284: Siamese cat
+  285: Egyptian Mau
+  286: cougar
+  287: lynx
+  288: leopard
+  289: snow leopard
+  290: jaguar
+  291: lion
+  292: tiger
+  293: cheetah
+  294: brown bear
+  295: American black bear
+  296: polar bear
+  297: sloth bear
+  298: mongoose
+  299: meerkat
+  300: tiger beetle
+  301: ladybug
+  302: ground beetle
+  303: longhorn beetle
+  304: leaf beetle
+  305: dung beetle
+  306: rhinoceros beetle
+  307: weevil
+  308: fly
+  309: bee
+  310: ant
+  311: grasshopper
+  312: cricket
+  313: stick insect
+  314: cockroach
+  315: mantis
+  316: cicada
+  317: leafhopper
+  318: lacewing
+  319: dragonfly
+  320: damselfly
+  321: red admiral
+  322: ringlet
+  323: monarch butterfly
+  324: small white
+  325: sulphur butterfly
+  326: gossamer-winged butterfly
+  327: starfish
+  328: sea urchin
+  329: sea cucumber
+  330: cottontail rabbit
+  331: hare
+  332: Angora rabbit
+  333: hamster
+  334: porcupine
+  335: fox squirrel
+  336: marmot
+  337: beaver
+  338: guinea pig
+  339: common sorrel
+  340: zebra
+  341: pig
+  342: wild boar
+  343: warthog
+  344: hippopotamus
+  345: ox
+  346: water buffalo
+  347: bison
+  348: ram
+  349: bighorn sheep
+  350: Alpine ibex
+  351: hartebeest
+  352: impala
+  353: gazelle
+  354: dromedary
+  355: llama
+  356: weasel
+  357: mink
+  358: European polecat
+  359: black-footed ferret
+  360: otter
+  361: skunk
+  362: badger
+  363: armadillo
+  364: three-toed sloth
+  365: orangutan
+  366: gorilla
+  367: chimpanzee
+  368: gibbon
+  369: siamang
+  370: guenon
+  371: patas monkey
+  372: baboon
+  373: macaque
+  374: langur
+  375: black-and-white colobus
+  376: proboscis monkey
+  377: marmoset
+  378: white-headed capuchin
+  379: howler monkey
+  380: titi
+  381: Geoffroy's spider monkey
+  382: common squirrel monkey
+  383: ring-tailed lemur
+  384: indri
+  385: Asian elephant
+  386: African bush elephant
+  387: red panda
+  388: giant panda
+  389: snoek
+  390: eel
+  391: coho salmon
+  392: rock beauty
+  393: clownfish
+  394: sturgeon
+  395: garfish
+  396: lionfish
+  397: pufferfish
+  398: abacus
+  399: abaya
+  400: academic gown
+  401: accordion
+  402: acoustic guitar
+  403: aircraft carrier
+  404: airliner
+  405: airship
+  406: altar
+  407: ambulance
+  408: amphibious vehicle
+  409: analog clock
+  410: apiary
+  411: apron
+  412: waste container
+  413: assault rifle
+  414: backpack
+  415: bakery
+  416: balance beam
+  417: balloon
+  418: ballpoint pen
+  419: Band-Aid
+  420: banjo
+  421: baluster
+  422: barbell
+  423: barber chair
+  424: barbershop
+  425: barn
+  426: barometer
+  427: barrel
+  428: wheelbarrow
+  429: baseball
+  430: basketball
+  431: bassinet
+  432: bassoon
+  433: swimming cap
+  434: bath towel
+  435: bathtub
+  436: station wagon
+  437: lighthouse
+  438: beaker
+  439: military cap
+  440: beer bottle
+  441: beer glass
+  442: bell-cot
+  443: bib
+  444: tandem bicycle
+  445: bikini
+  446: ring binder
+  447: binoculars
+  448: birdhouse
+  449: boathouse
+  450: bobsleigh
+  451: bolo tie
+  452: poke bonnet
+  453: bookcase
+  454: bookstore
+  455: bottle cap
+  456: bow
+  457: bow tie
+  458: brass
+  459: bra
+  460: breakwater
+  461: breastplate
+  462: broom
+  463: bucket
+  464: buckle
+  465: bulletproof vest
+  466: high-speed train
+  467: butcher shop
+  468: taxicab
+  469: cauldron
+  470: candle
+  471: cannon
+  472: canoe
+  473: can opener
+  474: cardigan
+  475: car mirror
+  476: carousel
+  477: tool kit
+  478: carton
+  479: car wheel
+  480: automated teller machine
+  481: cassette
+  482: cassette player
+  483: castle
+  484: catamaran
+  485: CD player
+  486: cello
+  487: mobile phone
+  488: chain
+  489: chain-link fence
+  490: chain mail
+  491: chainsaw
+  492: chest
+  493: chiffonier
+  494: chime
+  495: china cabinet
+  496: Christmas stocking
+  497: church
+  498: movie theater
+  499: cleaver
+  500: cliff dwelling
+  501: cloak
+  502: clogs
+  503: cocktail shaker
+  504: coffee mug
+  505: coffeemaker
+  506: coil
+  507: combination lock
+  508: computer keyboard
+  509: confectionery store
+  510: container ship
+  511: convertible
+  512: corkscrew
+  513: cornet
+  514: cowboy boot
+  515: cowboy hat
+  516: cradle
+  517: crane (machine)
+  518: crash helmet
+  519: crate
+  520: infant bed
+  521: Crock Pot
+  522: croquet ball
+  523: crutch
+  524: cuirass
+  525: dam
+  526: desk
+  527: desktop computer
+  528: rotary dial telephone
+  529: diaper
+  530: digital clock
+  531: digital watch
+  532: dining table
+  533: dishcloth
+  534: dishwasher
+  535: disc brake
+  536: dock
+  537: dog sled
+  538: dome
+  539: doormat
+  540: drilling rig
+  541: drum
+  542: drumstick
+  543: dumbbell
+  544: Dutch oven
+  545: electric fan
+  546: electric guitar
+  547: electric locomotive
+  548: entertainment center
+  549: envelope
+  550: espresso machine
+  551: face powder
+  552: feather boa
+  553: filing cabinet
+  554: fireboat
+  555: fire engine
+  556: fire screen sheet
+  557: flagpole
+  558: flute
+  559: folding chair
+  560: football helmet
+  561: forklift
+  562: fountain
+  563: fountain pen
+  564: four-poster bed
+  565: freight car
+  566: French horn
+  567: frying pan
+  568: fur coat
+  569: garbage truck
+  570: gas mask
+  571: gas pump
+  572: goblet
+  573: go-kart
+  574: golf ball
+  575: golf cart
+  576: gondola
+  577: gong
+  578: gown
+  579: grand piano
+  580: greenhouse
+  581: grille
+  582: grocery store
+  583: guillotine
+  584: barrette
+  585: hair spray
+  586: half-track
+  587: hammer
+  588: hamper
+  589: hair dryer
+  590: hand-held computer
+  591: handkerchief
+  592: hard disk drive
+  593: harmonica
+  594: harp
+  595: harvester
+  596: hatchet
+  597: holster
+  598: home theater
+  599: honeycomb
+  600: hook
+  601: hoop skirt
+  602: horizontal bar
+  603: horse-drawn vehicle
+  604: hourglass
+  605: iPod
+  606: clothes iron
+  607: jack-o'-lantern
+  608: jeans
+  609: jeep
+  610: T-shirt
+  611: jigsaw puzzle
+  612: pulled rickshaw
+  613: joystick
+  614: kimono
+  615: knee pad
+  616: knot
+  617: lab coaä
+$!6¸: l`dleJ0(619z laOpqhafe
+  62p: laptbr ãoipptG`( 23z$hawo0}og%rŠ( 6222 lens0ãap"¢v23; Paper onhfa
+  2~:"lhrrarx
+`0625* lifå@o!|* 162: |ig`ter$>2&:<imo|qijeJ  6288&ocean déner $¶=º0lipspick
+ h3p:0slapon*sèie
+ !619: ,otinn
+ 632z s0eaker
+  633:$|é5pd 06³4: saw}sll
+¤063u: magfg4éA gÿkðass (632: maaL Bag
+ 6;5: mai,jk|Êà ²3:: tkgits  619w$tanj"suyT
+  6400 Láfjjäe jovár
+  ¦41: eara!!Ž €64::}spiea
+  643" ­aws
+  ¶44: iatch* $6´5: ma9p/le  646º2-az§
+  ¶67: M%isusing ãup
+ *2°xj oe$icind chestŠ  6498 megaLitl** 650: íi#rKph~ne
+(6µ1: mygRoa~m0/vgn
+  252:#-iÌé|qry wjynorm‹! 655: íilk`çáî
+  454: mmîibus
+  6µ5y mmniS{+rt
+  456: milOva  ´57:2micso|e
+  68+ mittqn
+  65yj myzing bo7(
+  5&0: mmbqlI hNmE  661> Eolel T
+  &22: mmddm
+( 0632 loîastgsk
+!06>|2$ooniôop*  66q:2moàmd
+ €¶6: mr|as
+  >67:3sq1aZe qcade)a`c!p
+  ¶&:: iïQ1ue `669:$}]squéôk0nmt
+  67°º scoote
+( 731: i/untein "ike
+  6'¢: tenô !673: cmmtuter0mOuså
+à 6·:hMoqsetrap^ 0¶7=: mïrIng vcn
+  676: mõRrle !6778 nail
+ 067::dnebk$bp!ãe
+" ¶79!nmck}áce ¡680z4nipple  v818 lovmjëwk coMputá6*  >2> obedAck
+  283{ ocoe
+  6:4: oceréna  8µ: odometeb¨ 496: oél¨g)lôep
+  38:"orã!l  ¶88!osc+dtoó#Êpe
+  6<3:`overskirt
+  6+1: b}lloco £art
+  90: oxygE~ mask
+  48"> xaçae|
+  4y3* pa`ähe
+  694Z"pedDle whíel
+00685z pidìoãk
+  69>; paintbr}sx
+)(697:``cjemaS
+( v9°: palacä
+$!v99: pan æLýde
+  70p2 papm2€do÷el
+ !'4!:0pcvachuV¥!(7 R6 p!rallel!bars
+ `70³* ra2ë bench  ?04:`parcéng måxur0 ·05: b!fsengmvcar
+$ 3062 ðAtI÷
+  527> tiyp8One!(718 pedisal
+p 70;: renc)l"s!se
+ `710(pdnciL ÷harpenar  711º pebfum%
+$0?12: Petva¨`iqh1 612"potïso0ier $66{ 0lectrum
+* 6±5:°Øick5lhaubM  32¸ picket`f$ncå* 073:(pyykw0!tsucb
+  ?±øº$pMerŠ0 719>"pkee}!banc
+ (730: pylÌ bo4ule
+  7rq; `i~(ow
+  72:!%ing-`ong banLJ  73:(qYnw(eel
+ $2´: riRate"s(ip:¤ 705º pkvbhErJ" 326º hIo$"pìane
+  w27: pleleôaru}
+"`738: plistic g!gŠ *5:yº¨rlapd rack
+ (730:a`úow
+ !7ã:,plunfer   733: XolarOid ëaiEbá
+  ?33z pohe
+  w4: poìhce 4an
+ (91> poncèM.¢ §36r rIlÌi!pe |acìe  '³7Z8ot! btqle
+` 739: `ot+ !739:$potteR's wèoel
+! 740:!t/wMr d{im,
+! ?41: Pray%p ruæN( 742: p2inver
+  5t38 rrismn
+  70´: xrojçbtilE
+007$5: pronmktoP
+  346: `kckei"qui+k  1´7: punchinm beçˆ" ?48: Pt2óe  76y* quéll
+  75 : quilt*$ ?5qj ràcedcaz 05"º!rãakeu
+0 703: balie4or `¿54: 2aôio
+!!755: redio penmsSopm  75>: rAéo fa6renŠ$$7%µ:!reczgaôcO.al öehiglu
+  75:: rdel
+" w5y: reælEx0cQm%r!
+  720:(vefrkgeÒc4nr
+  5¶: bdmotm4ckntr,*!"?6<$âestayrQîô  76#: rdvmìvuò
+  76<; bidnEJ¤ 3/1:`rocK)~g gxakr
+  3&v: rotisrazée
+  7&7:`erawez
+  'ö¸: rõw&y bi*l.4?¶2`ruler
+  $“0: ruînyng shoE 77:(sAff  77:*"óafety"pi>  ww3:`salv$sàaKer
+`$714: sgodah
+017'5: óasongž! 7u6> saxo`hooÇ
+ ¦577: scabbazd
+` 7(: wdiGlynG wcald
+$!77): ócèoom`bõs
+! 7:2:@scj/gn%b
+  78q:"{cnre`mard  582:6CR@scRwmn
+" ·0¸ scrfw*( 786: scbeWdrévÅr!0785: qaat Bel4
+  7:p seSI*g }ac(éNeŠ`797z `)e,l
+  7(8"she ótmrm
+$ 58: qhoêi à'90: shoprk¯g0baske|
+  799:`shnppiN§ cápp
+0 79":`7èovgl
+° 793{ shower`cap# 79<: shower aq2t`m~
+" W85; ckj
+  w9>:`sk( måsk
+ $7¹7: sleeq¡ng(fec.  7=ˆ wli$e"rw|mŠ0"799:!slédino do¯ò
+ !8p0: slgt machije
+! 80±: 3~/skel*! 802: snowmobilm
+" 80c:!3nowphow (°80<: sOat äispunqez
+!!805:$slccer0ball  806: wok
+  887z snlar ôlirea`Co(lmcuor
+`!8082 3ombru3o  809:!;tp(bkwh
+0 81 :$spáci"bar* 841: 3paau hg`tDr
+0 83::$spSce 3luttla
+  °1c8 spa6tìa  8q<; lotosb!<
+  215: òpidaS ÷aB
+  :1v;(spynele
+  :%'2`3p}24s gcr  818: cpmulogj4
+¸0192 qt¡gu
+  <20: queam mocomotiveŠ!!=21: thvoufh )òãh briäge
+$08z2:€3ôeel`drwi
+ `8r2:¡S}ethoscotå
+` 84z s"arF  0*µ8 stgng wCLL &06:"w~oðwaUih
+ "²3z 3tod
+  80<: sôsaijer
+  ¸2)z tr!¡ 83°; tzu0cneR
+  8£±:`b/ucx  3s: stuPa
+  )338`{Ebmarinm !=349 suMt
+ !31: #õfdéal
+  836; sedwlécU
+  837:0sunglassEs
+, 8³8:wqnccreeú  8s=: sus0ensioz jrIdge
+h (40z!mor
+0 8t¹: sueátph)rtK  <42º swhmswitZ  4;2 óujng  :44 swmôch  pt5; syIogeZ  46:(ta"lg damp
+  847: ti.k
+  <48:(patE0PíAèer
+" 849: XerxIt -7p2!tadäq bear  <51: pelevisIo/K$ 0b: tenoiS b!ld
+  813* vlatc`e$ rm/nJ` x54:`n6oæ4 c}zt`(N 957> thémbnm
+  856: ô(2eslixcAoa`hafe
+ !57:`|hrone
+ ,85: |i,e Rgof  819>04ocStaV
+  70: vobck!o0{hop
+* 61:voilu6 coqd
+ (80: torc`"!86³: tope| po,u
+ )8:48 4og <rurk
+0 8>5: to1 {toReZ  <66: D2acporj d847:(qe|i%es`iler truck
+  :68: tziy‚  :49r trEnCh cat
+ 087°: trYCycle  8?1* trimáran
+, 872:!triqod
+  (73:(tr)orhAl arsh
+  :>0àtrglüeùbus
+"8(75: drolboNe
+ !976¼(4tbN  8w÷:`turnStile
+  878: ô}pewréuev keybard
+ (¸79: uer2mlm)
+0`8œ0º$uniay#le
+  ¸81> urrig`u(pyan/
+  ::3z facqý- cleaêez  883: waqg*  85: vaul|
+& 8x5: velvet
+d 886: Öenôing¨lac(ine
+ "88³: vespment  <88: öieduã$d 88;(vil(f
+  890: vO,leyrcl|J  8918!sAnwle iroî‰  8=": wall(block
+` *93j vanneõ  8948 ÷irdbgce
+  :97: oëlht@rm a)vcranu
+  89v: Sini
+  8972 wa{hi(d MacHine  8¹8: wa4%r bottla
+! 99:wãTer$jug
+  920> Va4m2 tmwe2  =°9: vHisoiy jug
+  902> wlirTle
+  803* smg$"92j wëntow qcreen*$!+05; win$ow sladd
+($904:0×)nesor tiu
+( 947> wIne bovtle
+  908* wiîm
+  9p9: wok
+  y10: Wooden sqomN
+$ 911> w/,  812j stlA|,r9iN!fgnãe
+0 9!3:(shirwrEk %814: ya÷lš  11·z@Yu;u
+ "9%66 WibsiTe
+  9q7º cïmmghbg_j$ 9180$còïs37o2+  919 äraöbck sign 012°z t2a&fag ìighô
+! 9¢1z dqsu0N`cKet
+ 8¢2> menuh" 922:$pèitm
+< 9"=º!guucamoleJ! 9²4:(#o~somme
+  926º hot pot
+  92:!tsitle
+% 928: {ce"cveám
+  928 ice!pOp
+  ±#0* caguetôe
+ (=318 caGeÌ
+  93"š prQtz%n
+ `9;3: áheeseburgev
+ "yS4 hotàtog! 935: íashed pmtatm  936: cacbag%
+` ?#7:(`rocbnlo
+  ¸30* caun)flow%r
+" 930: zucchani $940>0spághEttj cqtaih*  941; acoRn sõõasj
+ `=62? but}årnut Wqu`rx
+  943:"#5wwmrmr*  944: arôicjo{%$ 945: fe\l ð%ppEr  142~ ccrdon
+"¨y<7º musHvoïe
+  948: Gû`nny S])vx
+  9$1: ó4ráwjdRr9
+  8%p0 orange
+`"57: le}on  8=2 fig (¹#:(pmneappnl("954z banánqJ( 9%52 jácK¦r5it
+$ 956: {usard aò`l%
+  9=7:!|o,egranape
+ "958: mqy*  5; c@sbmnerq
+  960:0chco|!|%@sys|p ¨161> $/uGh*h 9¶2: íEatloaf
+  93¹ PizzaŠ  96$: `ot"ðia
+ (965: je*2yvo
+ `966: sel`wife  96?:,erprecsO
+à )¶8: c5t
+" 9f9: agg~og
+!0970z`alq
+  !2 òubc,e*0 ;72:0cliffŠ( 973: aïral Re%g`b=74: GuHsub $?5: lakeshorm`097¶: tjomonuovy $977: shoah"  978: seqshore
+( 97=: ~illäy
+  9¸02 vomâano
+ 99::báse"all`ðlcyer
+¢ 982; brh e#roke
+  y83:(cbõb! æYver
+  ;<<: radeqagd
+  =85:`Daisy
+( 86*!yellow ladù's sLhppes
+ 8987 cnrn
+  98z acmrn  98{; Rowe!hip
+  9y0: à/rse"c(eqpnut`;ded
+" 991: cïral(funfus
+!€982; aearha  Y9³: '{vgmiv²e" 9	*"svin{Hlrn duchrëmm
+ !9y'; eizth sôar*  996: @gn-ov-the-ogds
+  9;7:d"olEte  998: eqr  ;98: tgélet,tapdR
+
+
+#(EOwnl/a| wsipu?URL ,Kxxyof`l)
+dowflnaa$uata/scrip4s/ge$_AMeçdn#t.sh

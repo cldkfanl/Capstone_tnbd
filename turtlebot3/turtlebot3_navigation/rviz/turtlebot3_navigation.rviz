@@ -1,0 +1,358 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 78
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /TF1/Frames1
+        - /TF1/Tree1
+        - /Global Map1/Costmap1
+        - /Global Map1/Planner1
+        - /Local Map1
+        - /Local Map1/Polygon1
+        - /Local Map1/Costmap1
+        - /Local Map1/Planner1
+      Splitter Ratio: 0.5
+    Tree Height: 783
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Tool Properties
+    Expanded:
+      - /2D Pose Estimate1
+      - /2D Nav Goal1
+    Name: Tool Properties
+    Splitter Ratio: 0.588679016
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz/Time
+    Experimental: false
+    Name: Time
+    SyncMode: 0
+    SyncSource: LaserScan
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.0299999993
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 20
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: true
+      Links:
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_scan:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        caster_back_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        imu_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        wheel_left_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        wheel_right_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+      Name: RobotModel
+      Robot Description: robot_description
+      TF Prefix: ""
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+    - Class: rviz/TF
+      Enabled: false
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: false
+      Tree:
+        {}
+      Update Interval: 0
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/LaserScan
+      Color: 0; 255; 0
+      Color Transformer: FlatColor
+      Decay Time: 0
+      Enabled: true
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 13069
+      Min Color: 0; 0; 0
+      Min Intensity: 28
+      Name: LaserScan
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.0300000012
+      Style: Flat Squares
+      Topic: /scan
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: true
+    - Class: rviz/Image
+      Enabled: false
+      Image Topic: /raspicam_node/image
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Image
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: compressed
+      Unreliable: false
+      Value: false
+    - Alpha: 0.699999988
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /map
+      Unreliable: false
+      Use Timestamp: false
+      Value: true
+    - Alpha: 1
+      Buffer Length: 1
+      Class: rviz/Path
+      Color: 0; 0; 0
+      Enabled: true
+      Head Diameter: 0.300000012
+      Head Length: 0.200000003
+      Length: 0.300000012
+      Line Style: Lines
+      Line Width: 0.0299999993
+      Name: Planner Plan
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Radius: 0.0299999993
+      Shaft Diameter: 0.100000001
+      Shaft Length: 0.100000001
+      Topic: /move_base/NavfnROS/plan
+      Unreliable: false
+      Value: true
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 0.699999988
+          Class: rviz/Map
+          Color Scheme: costmap
+          Draw Behind: true
+          Enabled: true
+          Name: Costmap
+          Topic: /move_base/global_costmap/costmap
+          Unreliable: false
+          Use Timestamp: false
+          Value: true
+        - Alpha: 1
+          Buffer Length: 1
+          Class: rviz/Path
+          Color: 255; 0; 0
+          Enabled: true
+          Head Diameter: 0.300000012
+          Head Length: 0.200000003
+          Length: 0.300000012
+          Line Style: Lines
+          Line Width: 0.0299999993
+          Name: Planner
+          Offset:
+            X: 0
+            Y: 0
+            Z: 0
+          Pose Color: 255; 85; 255
+          Pose Style: None
+          Radius: 0.0299999993
+          Shaft Diameter: 0.100000001
+          Shaft Length: 0.100000001
+          Topic: /move_base/DWAPlannerROS/global_plan
+          Unreliable: false
+          Value: true
+      Enabled: true
+      Name: Global Map
+    - Class: rviz/Group
+      Displays:
+        - Alpha: 1
+          Class: rviz/Polygon
+          Color: 0; 0; 0
+          Enabled: true
+          Name: Polygon
+          Topic: /move_base/local_costmap/footprint
+          Unreliable: false
+          Value: true
+        - Alpha: 0.699999988
+          Class: rviz/Map
+          Color Scheme: costmap
+          Draw Behind: false
+          Enabled: true
+          Name: Costmap
+          Topic: /move_base/local_costmap/costmap
+          Unreliable: false
+          Use Timestamp: false
+          Value: true
+        - Alpha: 1
+          Buffer Length: 1
+          Class: rviz/Path
+          Color: 255; 255; 0
+          Enabled: true
+          Head Diameter: 0.300000012
+          Head Length: 0.200000003
+          Length: 0.300000012
+          Line Style: Lines
+          Line Width: 0.0299999993
+          Name: Planner
+          Offset:
+            X: 0
+            Y: 0
+            Z: 0
+          Pose Color: 255; 85; 255
+          Pose Style: None
+          Radius: 0.0299999993
+          Shaft Diameter: 0.100000001
+          Shaft Length: 0.100000001
+          Topic: /move_base/DWAPlannerROS/local_plan
+          Unreliable: false
+          Value: true
+      Enabled: true
+      Name: Local Map
+    - Alpha: 1
+      Arrow Length: 0.0500000007
+      Axes Length: 0.300000012
+      Axes Radius: 0.00999999978
+      Class: rviz/PoseArray
+      Color: 0; 192; 0
+      Enabled: true
+      Head Length: 0.0700000003
+      Head Radius: 0.0299999993
+      Name: Amcl Particles
+      Shaft Length: 0.230000004
+      Shaft Radius: 0.00999999978
+      Shape: Arrow (Flat)
+      Topic: /particlecloud
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Axes Length: 1
+      Axes Radius: 0.100000001
+      Class: rviz/Pose
+      Color: 255; 25; 0
+      Enabled: true
+      Head Length: 0.300000012
+      Head Radius: 0.100000001
+      Name: Goal
+      Shaft Length: 0.5
+      Shaft Radius: 0.0500000007
+      Shape: Arrow
+      Topic: /move_base_simple/goal
+      Unreliable: false
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Default Light: true
+    Fixed Frame: map
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/MoveCamera
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/Select
+    - Class: rviz/SetInitialPose
+      Topic: /initialpose
+    - Class: rviz/SetGoal
+      Topic: /move_base_simple/goal
+    - Class: rviz/Measure
+  Value: true
+  Views:
+    Current:
+      Angle: -1.57079637
+      Class: rviz/TopDownOrtho
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.0599999987
+ d†∞    St%rAo(Nocal EksTancm: q
+  t  $  Qcep CtmrEn E}es0fgls%
+   8( !Vamue: ‚i|se
+  ,! 2kjvdr|†R axis:†FaLse
+  `(! ^qme:"CURreo|`vkewj ` †  Neab4Cli0†Di2panÁm:!0*00y999p1π58
+±  "! S„`le>(100
+6   `$T!rÁe4 Fraod8 >GixEd FZ°Ie.
+     !Vanu%>(DopDownOr|`o (sviz©    a 0H: 0
+0 !  $Q: 0
+ b$ Sawed*!~
+Wandov «enÌetf˘:
+  DispÏayS8
+c!  ÎO,laPs%t: Êal„e*``aifËt∫`5026
+ $@idd nef| @obk: ‰cmse
+" Hidu†Zkeld DÔkk* tsue
+  Image:
+  † comlapsud: balse
+("ëMaA~Whndiw2ete: 000p0∞&f000< rfd(1000<40004000 1000426a00000sq2nc02x∞p00087f¬000000122053406=∞–6c0 6506204?>068 8f106e01000(1G10020∞p9b000 026600f6dgfvÊb020 11E0054026f 06f826„002080500'"46f$270 8618032007¥4069p00=0073rp00001ed"0000df020p∏5080800!3Fb0300t∞12p05&0ê29±26ï017S04w#ò02000540 <f006b42000008nf00012130P401811r044122vb†08∞40010ı4004g006f804k00 tpe00p5:04&F0z70006#10720p34006900650p380#20#210222πò0000∞11`004¥032140000 'efb01000 18∞0440∞&90 73007006c046q027907≥ 1X14940$30∞4403a0100pdd80ff&gbdfb04200P0a p400&d§06004670p650082qQ0s170∏200cc0000001800ffffbf&*0000240a084y0d$0≤30167206%000001∏33<:00 00ce09∞0x84000<0010≤0000005 00p10g010p8;c0fc0200002003fb000001e00u4096g016j116c01225000ó2∞17f00w∞226=¥27280w40p∂9:2>51ßc410004p∞5104<8¥î80000000000 00Êf000000pA04020490665778073 012008034040;A4∞0¥40†b:00ffffffnb0∞0000q"005#00∂5¥06c00650∞791p744068006f1∞6e010000024a0∞0t pc200x000020p000080 002p200008$90080h 2A9Êc2500800∞01f"12(0a00a005200∂900650∞7700?3 30000004e0 00009p(02p0:%00000019710p02340H104a00200 ;efb∞1000001<2Fbp0 p00820=500490∞?d6p65000000040p∞∏0014a0p200026000Êfb&fffb00(00008004%p0v(0p6d00650100 0¥200008µ00000000000∞00∞0∞20008&0403a010P∞∞0$p0018000004081p00108&30000:0(10003 0 31003 80ë00:024∞a0054 06fr06f†26c407321000&1400ffg`alFnp00004 0 0ë280
+0 Aemection2
+0!  collA`Ûed9‡&ihsD
+  tkmE>
+ †  collarsetidplzE
+ †Tokn Pvkqerdyes*#  0codlaqsdd:dÊals%
+  Vidww;
+ (  cÔÏl±p„gd: tpua
+! kdth: 1R79
+  X:$0
+ ÇY: 0
